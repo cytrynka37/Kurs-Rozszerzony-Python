@@ -1,1 +1,1 @@
-# Kurs-Rozszerzony-Python
+Kurs Rozszerzony Python

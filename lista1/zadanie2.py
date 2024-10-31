@@ -10,8 +10,12 @@ def is_palindrom(text):
         
     return True
 
-print(is_palindrom("palindrom"))
-print(is_palindrom("kajak"))
-print(is_palindrom("Kobyła ma mały bok."))
-print(is_palindrom("Eine güldne, gute Tugend: Lüge nie!"))
-print(is_palindrom("Míč omočím."))
+words = [
+    "palindrom",
+    "kajak",
+    "Kobyła ma mały bok.",
+    "Eine güldne, gute Tugend: Lüge nie!",
+    "Míč omočím."]
+
+for word in words:
+    print(f"'{word}': {is_palindrom(word)}")
