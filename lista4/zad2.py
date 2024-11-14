@@ -1,3 +1,4 @@
+#Kaja Matuszewska 345951 lista 4 zadanie 2
 import itertools
 
 class FormulaTypeError(TypeError):
@@ -15,6 +16,9 @@ class Formula:
     def __str__(self):
         pass
     
+    def eval(self):
+        pass
+    
     def __add__(self, other):
         if not isinstance(other, Formula):
             raise FormulaTypeError("Right operand must be a Formula.")
@@ -26,8 +30,8 @@ class Formula:
         return And(self, other)
 
     def get_variables(self):
-        return {}
-    
+        return set()
+
     def is_tautology(self):
         variables = {v for v in self.get_variables()}
         for values in itertools.product([True, False], repeat=len(variables)):
@@ -161,9 +165,15 @@ class Or(Formula):
 
 
 f1 = Or(Variable("p"), Not(Variable("p")))
-f2 = And(Variable("r"), Variable("s"))
-f3 = And(Variable("r"), Constant(True)) * f1
-f4 = f1 * f2
+f2 = And(Variable("r"), Constant(True)) * f1
+f3 = Or(Constant(True), Variable("r"))
+
 print(f"is {f1} tautology? {f1.is_tautology()}")
+print(f"{f2} simplified: {f2.simplify()}")
 print(f"{f3} simplified: {f3.simplify()}")
-print(f4)
+print(f"is {f3} tautology? {f3.is_tautology()}")
+
+try:
+    print(Variable(123))
+except FormulaTypeError as e:
+     print(f"Error: {e}")
