@@ -8,7 +8,7 @@ async def fetch_cat_fact():
         async with session.get(url) as response:
             if response.status == 200:
                 data = await response.json()
-                return data["fact"]
+                return data['fact']
             else:
                 return "Nie udało się pobrać faktu o kotach."
             
@@ -18,10 +18,7 @@ async def fetch_weather(city):
         async with session.get(url) as response:
             if response.status == 200:
                 data = await response.json()
-                return {
-                    "miasto": city,
-                    "temperatura": data["main"]["temp"],
-                }
+                return f"miasto: {city}, temperatura: {data['main']['temp']}"
             else:
                 return f"Nie udało się pobrać pogody dla {city}."
 
